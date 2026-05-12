@@ -1,0 +1,26 @@
+<!--
+  ErrorState component
+  Usage: <div class="ui-error"><h3>Unable to load</h3><p>...</p><button class="ui-button ...">Retry</button></div>
+-->
+<style>
+  .ui-error {
+    display: grid;
+    gap: var(--space-12);
+    border: 1px solid var(--color-danger-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-danger-soft);
+    padding: var(--space-24);
+  }
+
+  .ui-error h3 {
+    margin: 0;
+    color: var(--color-danger-foreground);
+    font-size: var(--font-size-section);
+    line-height: var(--line-height-section);
+  }
+
+  .ui-error p {
+    margin: 0;
+    color: var(--color-text-secondary);
+  }
+</style>

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Broker Review Queue - v0 Flow</title>
+    <style>
+      body {
+        margin: 24px;
+        font-family: Arial, sans-serif;
+      }
+
+      .case {
+        margin: 12px 0;
+        padding: 12px;
+        border: 1px solid #ddd;
+      }
+
+      .state {
+        margin-top: 24px;
+        padding: 12px;
+        border: 1px solid #999;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Broker Review Queue</h1>
+    <p>Functional prototype for reviewing KYC and withdrawal cases.</p>
+
+    <button>Approve Selected</button>
+    <button>Request More Information</button>
+
+    <div class="case">
+      <strong>KYC-1048</strong>
+      <p>Status: Reviewing</p>
+      <p>User: Maria Gomez</p>
+      <p>Risk: Address mismatch</p>
+    </div>
+
+    <div class="case">
+      <strong>WD-8891</strong>
+      <p>Status: Blocked</p>
+      <p>User: Chen Wei</p>
+      <p>Amount: 18,420 USD</p>
+      <p>Reason: Liveness verification missing</p>
+    </div>
+
+    <div class="state">
+      <h2>States</h2>
+      <p>default, loading, empty, error, success, failed, reviewing, blocked</p>
+    </div>
+  </body>
+</html>

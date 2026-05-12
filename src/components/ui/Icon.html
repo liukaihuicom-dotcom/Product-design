@@ -1,0 +1,52 @@
+<!--
+  Icon component pattern
+  Source: src/assets/icons/*
+  Preferred usage with currentColor-friendly CSS mask assets:
+
+  <span class="icon icon-sm icon-primary icon--asset icon-wallet" aria-hidden="true"></span>
+
+  Usage with original-color brand/payment images:
+
+  <span class="icon icon-sm icon-default" aria-hidden="true">
+    <img src="../../assets/icons/system/filter.svg" alt="">
+  </span>
+
+  Pair functional icons with visible text. Use aria-label only for icon-only controls.
+-->
+<style>
+  .icon {
+    display: inline-flex;
+    width: var(--icon-size-md);
+    height: var(--icon-size-md);
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    color: var(--icon-color-default);
+    line-height: 0;
+    vertical-align: middle;
+  }
+
+  .icon svg,
+  .icon img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .icon-xs { width: var(--icon-size-xs); height: var(--icon-size-xs); }
+  .icon-sm { width: var(--icon-size-sm); height: var(--icon-size-sm); }
+  .icon-md { width: var(--icon-size-md); height: var(--icon-size-md); }
+  .icon-lg { width: var(--icon-size-lg); height: var(--icon-size-lg); }
+  .icon-xl { width: var(--icon-size-xl); height: var(--icon-size-xl); }
+  .icon-2xl { width: var(--icon-size-2xl); height: var(--icon-size-2xl); }
+  .icon-3xl { width: var(--icon-size-3xl); height: var(--icon-size-3xl); }
+
+  .icon-default { color: var(--icon-color-default); }
+  .icon-muted { color: var(--icon-color-muted); }
+  .icon-primary { color: var(--icon-color-primary); }
+  .icon-success { color: var(--icon-color-success); }
+  .icon-warning { color: var(--icon-color-warning); }
+  .icon-danger { color: var(--icon-color-danger); }
+  .icon-info { color: var(--icon-color-info); }
+  .icon-inverse { color: var(--icon-color-inverse); }
+</style>

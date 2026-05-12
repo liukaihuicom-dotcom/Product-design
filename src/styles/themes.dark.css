@@ -1,0 +1,16 @@
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-bg-page: #102000;
+  --color-bg-surface: #173000;
+  --color-bg-subtle: #203c08;
+  --color-bg-brand-soft: #274d0a;
+  --color-text-primary: #f2ffe8;
+  --color-text-secondary: #c7d8bd;
+  --color-text-tertiary: #9daf93;
+  --color-text-inverse: #163300;
+  --color-border-default: #35561e;
+  --color-border-strong: #4d742b;
+  --shadow-card: 0 10px 28px rgba(0, 0, 0, 0.28);
+  --shadow-dropdown: 0 14px 36px rgba(0, 0, 0, 0.36);
+  --shadow-modal: 0 24px 56px rgba(0, 0, 0, 0.42);
+}

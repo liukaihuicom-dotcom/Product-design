@@ -1,0 +1,68 @@
+<!--
+  Card component
+  Variants: default, elevated, interactive, warning, success
+  Usage: <section class="ui-card ui-card--default">...</section>
+-->
+<style>
+  .ui-card {
+    border: 1px solid var(--color-border-default);
+    border-radius: var(--card-radius);
+    background: var(--color-bg-surface);
+    padding: var(--card-padding);
+  }
+
+  .ui-card--elevated {
+    border-color: transparent;
+    box-shadow: var(--shadow-card);
+  }
+
+  .ui-card--interactive {
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
+  }
+
+  .ui-card--interactive:hover {
+    border-color: var(--color-border-strong);
+    box-shadow: var(--shadow-card);
+    transform: translateY(-1px);
+  }
+
+  .ui-card--warning {
+    border-color: var(--color-warning-border);
+    background: var(--color-bg-warning-soft);
+  }
+
+  .ui-card--success {
+    border-color: var(--color-success-border);
+    background: var(--color-bg-success-soft);
+  }
+
+  .ui-card__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-16);
+    margin-bottom: var(--space-16);
+  }
+
+  .ui-card__title {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: var(--font-size-section);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-section);
+  }
+
+  .ui-card__description {
+    margin: var(--space-4) 0 0;
+    color: var(--color-text-secondary);
+  }
+
+  .ui-card__footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-12);
+    margin-top: var(--space-20);
+    padding-top: var(--space-16);
+    border-top: 1px solid var(--color-border-default);
+  }
+</style>

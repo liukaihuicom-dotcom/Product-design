@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Broker Review Queue - Production UI HTML</title>
+    <link rel="stylesheet" href="../../styles/globals.css">
+    <link rel="stylesheet" href="../../styles/components.css">
+    <style>
+      .metric-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: var(--space-16);
+        margin-bottom: var(--space-16);
+      }
+
+      .metric-value {
+        margin: 0;
+        color: var(--color-text-primary);
+        font-size: var(--font-size-display);
+        font-weight: var(--font-weight-bold);
+        line-height: var(--line-height-display);
+      }
+
+      .metric-card--accent {
+        background: var(--color-bg-brand-soft);
+      }
+
+      .metric-heading {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--space-12);
+      }
+
+      .metric-label {
+        margin: var(--space-4) 0 0;
+        color: var(--color-text-secondary);
+      }
+
+      .filter-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr minmax(180px, 1.3fr);
+        gap: var(--space-12);
+        margin-bottom: var(--space-16);
+      }
+
+      .state-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--space-16);
+      }
+
+      .state-panel {
+        display: grid;
+        gap: var(--space-8);
+        min-height: 148px;
+        border: 1px solid var(--color-border-default);
+        border-radius: var(--radius-lg);
+        background: var(--color-bg-surface);
+        padding: var(--space-16);
+      }
+
+      .state-panel h3,
+      .qa-list h3 {
+        margin: 0;
+        font-size: var(--font-size-body-lg);
+        line-height: var(--line-height-body);
+      }
+
+      .state-panel p,
+      .qa-list p {
+        margin: 0;
+        color: var(--color-text-secondary);
+      }
+
+      .case-id {
+        color: var(--color-brand-primary);
+        font-weight: var(--font-weight-semibold);
+      }
+
+      .style-note {
+        display: inline-flex;
+        width: fit-content;
+        align-items: center;
+        gap: var(--space-8);
+        border: 1px solid var(--color-border-default);
+        border-radius: var(--radius-pill);
+        background: var(--color-bg-surface);
+        color: var(--color-text-secondary);
+        padding: var(--space-6) var(--space-12);
+        font-size: var(--font-size-caption);
+        font-weight: var(--font-weight-semibold);
+        line-height: var(--line-height-caption);
+      }
+
+      .style-note::before {
+        width: 8px;
+        height: 8px;
+        border-radius: var(--radius-pill);
+        background: var(--color-brand-accent);
+        content: "";
+      }
+
+      .title-with-icon {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-8);
+      }
+
+      .action-bar {
+        position: sticky;
+        top: var(--space-16);
+      }
+
+      .review-layout {
+        margin-top: var(--space-24);
+      }
+
+      .qa-list {
+        display: grid;
+        gap: var(--space-12);
+      }
+
+      .timeline {
+        display: grid;
+        gap: var(--space-12);
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .timeline li {
+        display: grid;
+        grid-template-columns: 92px 1fr;
+        gap: var(--space-12);
+        padding-bottom: var(--space-12);
+        border-bottom: 1px solid var(--color-border-default);
+      }
+
+      .timeline li:last-child {
+        padding-bottom: 0;
+        border-bottom: 0;
+      }
+
+      @media (max-width: 980px) {
+        .metric-grid,
+        .filter-grid,
+        .state-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .action-bar {
+          position: static;
+        }
+      }
+
+      @media (max-width: 520px) {
+        .metric-value {
+          font-size: var(--font-size-title);
+          line-height: var(--line-height-title);
+        }
+
+        .timeline li {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="page-header">
+        <div>
+          <p class="page-kicker">Compliance operations</p>
+          <h1 class="page-title">Broker Review Queue</h1>
+          <p class="page-subtitle">Review KYC, deposit, and withdrawal cases with visible risk reasons, clear next actions, and a Wise-inspired money-first interface.</p>
+          <p class="style-note">Wise-inspired: bright green actions, forest green hierarchy, clear money movement</p>
+        </div>
+        <div class="cluster" aria-label="Page actions">
+          <button class="ui-button ui-button--secondary ui-button--md">
+            <span class="icon icon-sm icon-default icon--asset icon-download" aria-hidden="true"></span>
+            Export Queue
+          </button>
+          <button class="ui-button ui-button--primary ui-button--md">
+            <span class="icon icon-sm icon-primary icon--asset icon-reviewer" aria-hidden="true"></span>
+            Review Action Required
+          </button>
+        </div>
+      </header>
+
+      <section class="metric-grid" aria-label="Queue summary">
+        <article class="ui-card ui-card--elevated metric-card--accent">
+          <div class="metric-heading">
+            <p class="metric-value">28</p>
+            <span class="icon icon-lg icon-primary icon--asset icon-document-review" aria-hidden="true"></span>
+          </div>
+          <p class="metric-label">Open cases</p>
+          <p class="metadata">12 need same-day review</p>
+        </article>
+        <article class="ui-card metric-card--accent">
+          <div class="metric-heading">
+            <p class="metric-value">7</p>
+            <span class="icon icon-lg icon-danger icon--asset icon-risk" aria-hidden="true"></span>
+          </div>
+          <p class="metric-label">High risk</p>
+          <p class="metadata">Identity, sanction, or funds risk</p>
+        </article>
+        <article class="ui-card">
+          <div class="metric-heading">
+            <p class="metric-value">4</p>
+            <span class="icon icon-lg icon-danger icon--asset icon-withdrawal" aria-hidden="true"></span>
+          </div>
+          <p class="metric-label">Blocked withdrawals</p>
+          <p class="metadata">Funds are held, not debited</p>
+        </article>
+        <article class="ui-card">
+          <div class="metric-heading">
+            <p class="metric-value">2h 14m</p>
+            <span class="icon icon-lg icon-warning icon--asset icon-status-reviewing" aria-hidden="true"></span>
+          </div>
+          <p class="metric-label">Oldest SLA</p>
+          <p class="metadata">KYC-1048, address mismatch</p>
+        </article>
+      </section>
+
+      <div class="ui-alert ui-alert--warning ui-alert--with-icon">
+        <span class="icon icon-md icon-warning icon--asset icon-status-blocked" aria-hidden="true"></span>
+        <div>
+          <strong>Withdrawal movement is blocked for 4 cases</strong>
+          <span>Funds cannot leave trading accounts until liveness verification is complete or compliance manually clears the hold. Clients can view the hold reason, but balances are not debited.</span>
+        </div>
+      </div>
+
+      <div class="layout-grid review-layout">
+        <section class="stack">
+          <article class="ui-card ui-card--elevated">
+            <div class="ui-card__header">
+              <div>
+                <h2 class="ui-card__title">Cases requiring review</h2>
+                <p class="ui-card__description">Default state sorted by risk level, SLA age, and money movement impact.</p>
+              </div>
+              <span class="ui-status ui-status--warning">Reviewing</span>
+            </div>
+
+            <div class="filter-grid">
+              <label class="ui-field">
+                <span class="ui-field__label">Status</span>
+                <select class="ui-select">
+                  <option>All active statuses</option>
+                  <option>Reviewing</option>
+                  <option>Pending</option>
+                  <option>Blocked</option>
+                  <option>Failed</option>
+                </select>
+              </label>
+              <label class="ui-field">
+                <span class="ui-field__label">Risk level</span>
+                <select class="ui-select">
+                  <option>High and medium</option>
+                  <option>High only</option>
+                  <option>All levels</option>
+                </select>
+              </label>
+              <label class="ui-field">
+                <span class="ui-field__label">Search</span>
+                <span class="ui-input-affix">
+                  <input class="ui-input" placeholder="Case ID, account, or client">
+                  <span class="ui-input-affix__suffix">
+                    <span class="icon icon-sm icon-muted icon--asset icon-search" aria-hidden="true"></span>
+                  </span>
+                </span>
+              </label>
+            </div>
+
+            <div class="ui-table-wrap">
+              <table class="ui-table">
+                <thead>
+                  <tr>
+                    <th>Case</th>
+                    <th>Client</th>
+                    <th>Status</th>
+                    <th>Risk reason</th>
+                    <th class="is-right">Amount</th>
+                    <th>SLA</th>
+                    <th class="is-actions">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="case-id">KYC-1048</span></td>
+                    <td>Maria Gomez<br><span class="metadata">ACC-28194</span></td>
+                    <td><span class="ui-status ui-status--warning ui-status--with-icon"><span class="icon icon-xs icon-warning icon--asset icon-status-reviewing" aria-hidden="true"></span>Reviewing</span></td>
+                    <td>Address mismatch</td>
+                    <td class="amount">-</td>
+                    <td>2h 14m</td>
+                    <td class="is-actions"><button class="ui-button ui-button--ghost ui-button--sm">Open<span class="icon icon-xs icon-primary icon--asset icon-chevron-right" aria-hidden="true"></span></button></td>
+                  </tr>
+                  <tr>
+                    <td><span class="case-id">WD-8891</span></td>
+                    <td>Chen Wei<br><span class="metadata">ACC-44720</span></td>
+                    <td><span class="ui-status ui-status--danger ui-status--with-icon"><span class="icon icon-xs icon-danger icon--asset icon-status-blocked" aria-hidden="true"></span>Blocked</span></td>
+                    <td>Liveness required</td>
+                    <td class="amount">18,420.00 USD</td>
+                    <td>48m</td>
+                    <td class="is-actions"><button class="ui-button ui-button--ghost ui-button--sm">Open<span class="icon icon-xs icon-primary icon--asset icon-chevron-right" aria-hidden="true"></span></button></td>
+                  </tr>
+                  <tr>
+                    <td><span class="case-id">DP-3402</span></td>
+                    <td>Ana Novak<br><span class="metadata">ACC-10243</span></td>
+                    <td><span class="ui-status ui-status--info ui-status--with-icon"><span class="icon icon-xs icon-info icon--asset icon-status-processing" aria-hidden="true"></span>Pending</span></td>
+                    <td>Bank receipt verification</td>
+                    <td class="amount">7,250.00 USD</td>
+                    <td>31m</td>
+                    <td class="is-actions"><button class="ui-button ui-button--ghost ui-button--sm">Open<span class="icon icon-xs icon-primary icon--asset icon-chevron-right" aria-hidden="true"></span></button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="ui-card">
+            <div class="ui-card__header">
+              <div>
+                <h2 class="ui-card__title">State coverage</h2>
+                <p class="ui-card__description">Business states required by `docs/design-system/STATES.md`.</p>
+              </div>
+            </div>
+            <div class="state-grid">
+              <section class="state-panel">
+                <span class="ui-status ui-status--info ui-status--with-icon"><span class="icon icon-xs icon-info icon--asset icon-status-processing" aria-hidden="true"></span>Loading</span>
+                <div class="ui-loading"><span class="ui-loading__spinner"></span><span>Loading review queue and risk signals...</span></div>
+                <p>Actions stay disabled to prevent duplicate processing.</p>
+              </section>
+              <section class="state-panel">
+                <span class="ui-status ui-status--neutral ui-status--with-icon"><span class="icon icon-xs icon-muted icon--asset icon-filter" aria-hidden="true"></span>Empty</span>
+                <h3>No cases match these filters</h3>
+                <p>No account or funds are affected. Clear filters to see other review work.</p>
+              </section>
+              <section class="state-panel">
+                <span class="ui-status ui-status--danger ui-status--with-icon"><span class="icon icon-xs icon-danger icon--asset icon-status-failed" aria-hidden="true"></span>Error</span>
+                <h3>Review queue could not load</h3>
+                <p>Risk signals timed out. Retry before approving financial movement.</p>
+              </section>
+              <section class="state-panel">
+                <span class="ui-status ui-status--success ui-status--with-icon"><span class="icon icon-xs icon-success icon--asset icon-status-success" aria-hidden="true"></span>Success</span>
+                <h3>Case approved</h3>
+                <p>The client was notified and the account timeline was updated.</p>
+              </section>
+              <section class="state-panel">
+                <span class="ui-status ui-status--danger ui-status--with-icon"><span class="icon icon-xs icon-danger icon--asset icon-status-failed" aria-hidden="true"></span>Failed</span>
+                <h3>Verification failed</h3>
+                <p>The submitted document does not match account information. Request resubmission.</p>
+              </section>
+              <section class="state-panel">
+                <span class="ui-status ui-status--danger ui-status--with-icon"><span class="icon icon-xs icon-danger icon--asset icon-status-blocked" aria-hidden="true"></span>Blocked</span>
+                <h3>Withdrawal remains blocked</h3>
+                <p>Money is not debited while liveness verification is incomplete.</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="ui-card">
+            <div class="ui-card__header">
+              <div>
+                <h2 class="ui-card__title">Recent review timeline</h2>
+                <p class="ui-card__description">Chronological record for audit and operational clarity.</p>
+              </div>
+            </div>
+            <ul class="timeline">
+              <li>
+                <span class="metadata">09:42</span>
+                <span>Risk engine flagged WD-8891 because liveness verification is missing.</span>
+              </li>
+              <li>
+                <span class="metadata">09:18</span>
+                <span>Reviewer requested proof of address resubmission for KYC-1048.</span>
+              </li>
+              <li>
+                <span class="metadata">08:55</span>
+                <span>Deposit DP-3402 entered bank receipt verification.</span>
+              </li>
+            </ul>
+          </article>
+        </section>
+
+        <aside class="stack action-bar">
+          <section class="ui-card">
+            <div class="ui-card__header">
+              <div>
+                <h2 class="ui-card__title">Primary action</h2>
+                <p class="ui-card__description">A case must be selected before bulk processing.</p>
+              </div>
+            </div>
+            <div class="stack">
+              <button class="ui-button ui-button--primary ui-button--md" disabled>
+                <span class="icon icon-sm icon-primary icon--asset icon-status-success" aria-hidden="true"></span>
+                Approve Selected
+              </button>
+              <button class="ui-button ui-button--secondary ui-button--md">
+                <span class="icon icon-sm icon-default icon--asset icon-document-upload" aria-hidden="true"></span>
+                Request More Information
+              </button>
+              <button class="ui-button ui-button--ghost ui-button--md">
+                <span class="icon icon-sm icon-primary icon--asset icon-reviewer" aria-hidden="true"></span>
+                Assign to Senior Reviewer
+              </button>
+            </div>
+            <p class="metadata">Disabled reason: no eligible case is selected.</p>
+          </section>
+
+          <section class="ui-card ui-card--warning">
+            <h2 class="ui-card__title title-with-icon"><span class="icon icon-md icon-danger icon--asset icon-locked" aria-hidden="true"></span>Blocked withdrawal</h2>
+            <p class="ui-card__description">What happened: the client requested a withdrawal before completing liveness verification.</p>
+            <p class="ui-card__description">Why: compliance policy requires liveness before high-value withdrawals.</p>
+            <p class="ui-card__description">Next step: ask the client to complete liveness, then reopen the hold review.</p>
+          </section>
+
+          <div class="ui-alert ui-alert--info ui-alert--with-icon">
+            <span class="icon icon-md icon-info icon--asset icon-compliance" aria-hidden="true"></span>
+            <div>
+              <strong>Reviewer guidance</strong>
+              <span>For blocked withdrawals, verify liveness status before changing the funds hold.</span>
+            </div>
+          </div>
+
+          <section class="ui-card qa-list">
+            <h2 class="ui-card__title">UI QA summary</h2>
+            <p>Used Wise-inspired tokens, reusable UI classes, documented icon assets, responsive grids, complete states, visible status text, right-aligned amounts, and clear compliance copy.</p>
+          </section>
+        </aside>
+      </div>
+    </main>
+  </body>
+</html>

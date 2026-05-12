@@ -1,0 +1,18 @@
+:root[data-platform="app"],
+:root[data-platform="h5"] {
+  --page-padding: 16px;
+  --section-gap: 20px;
+  --card-padding: 16px;
+  --field-gap: 12px;
+  --list-item-gap: 8px;
+  --bottom-action-padding: 16px;
+
+  --button-height-md: 44px;
+  --button-height-lg: 52px;
+  --input-height-md: 48px;
+  --touch-target-min: 44px;
+
+  --radius-input: 12px;
+  --radius-button: var(--radius-pill);
+  --radius-sheet: 24px;
+}

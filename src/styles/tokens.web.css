@@ -1,0 +1,17 @@
+:root[data-platform="web"] {
+  --page-padding: 32px;
+  --section-gap: 24px;
+  --card-padding: 20px;
+  --field-gap: 12px;
+  --list-item-gap: 12px;
+  --bottom-action-padding: 24px;
+
+  --button-height-md: 40px;
+  --button-height-lg: 48px;
+  --input-height-md: 40px;
+  --touch-target-min: 40px;
+
+  --radius-input: 14px;
+  --radius-button: var(--radius-pill);
+  --radius-sheet: 20px;
+}

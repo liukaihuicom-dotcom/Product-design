@@ -1,0 +1,83 @@
+<!--
+  Input component
+  Usage:
+  <label class="ui-field">
+    <span class="ui-field__label">Amount</span>
+    <span class="ui-input-affix">
+      <input class="ui-input" value="12500.00">
+      <span class="ui-input-affix__suffix">USD</span>
+    </span>
+    <span class="ui-field__helper">Minimum withdrawal is 100 USD.</span>
+  </label>
+-->
+<style>
+  .ui-field {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  .ui-field__label {
+    color: var(--color-text-primary);
+    font-size: var(--font-size-caption);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-caption);
+  }
+
+  .ui-field__helper {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-caption);
+    line-height: var(--line-height-caption);
+  }
+
+  .ui-field__error {
+    color: var(--color-danger);
+    font-size: var(--font-size-caption);
+    line-height: var(--line-height-caption);
+  }
+
+  .ui-input,
+  .ui-select {
+    width: 100%;
+    height: var(--input-height-md);
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--input-radius);
+    background: var(--color-bg-surface);
+    color: var(--color-text-primary);
+    padding: 0 var(--space-12);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+  }
+
+  .ui-input:focus,
+  .ui-select:focus {
+    border-color: var(--color-brand-accent);
+    box-shadow: 0 0 0 4px var(--color-brand-focus);
+    outline: none;
+  }
+
+  .ui-input::placeholder {
+    color: var(--color-text-tertiary);
+  }
+
+  .ui-input[aria-invalid="true"] {
+    border-color: var(--color-danger);
+  }
+
+  .ui-input-affix {
+    position: relative;
+    display: block;
+  }
+
+  .ui-input-affix .ui-input {
+    padding-right: 64px;
+  }
+
+  .ui-input-affix__suffix {
+    position: absolute;
+    top: 50%;
+    right: var(--space-12);
+    transform: translateY(-50%);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-caption);
+    font-weight: var(--font-weight-semibold);
+  }
+</style>

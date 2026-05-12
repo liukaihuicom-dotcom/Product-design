@@ -1,0 +1,45 @@
+<!--
+  Alert component
+  Variants: info, warning, danger, success
+  Usage: <div class="ui-alert ui-alert--warning"><strong>Review required</strong><span>...</span></div>
+-->
+<style>
+  .ui-alert {
+    display: grid;
+    gap: var(--space-4);
+    border: 1px solid var(--color-border-default);
+    border-radius: var(--radius-md);
+    padding: var(--space-12) var(--space-16);
+  }
+
+  .ui-alert strong {
+    color: var(--color-text-primary);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .ui-alert span,
+  .ui-alert p {
+    margin: 0;
+    color: var(--color-text-secondary);
+  }
+
+  .ui-alert--info {
+    border-color: var(--color-info-border);
+    background: var(--color-bg-info-soft);
+  }
+
+  .ui-alert--warning {
+    border-color: var(--color-warning-border);
+    background: var(--color-bg-warning-soft);
+  }
+
+  .ui-alert--danger {
+    border-color: var(--color-danger-border);
+    background: var(--color-bg-danger-soft);
+  }
+
+  .ui-alert--success {
+    border-color: var(--color-success-border);
+    background: var(--color-bg-success-soft);
+  }
+</style>

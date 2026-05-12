@@ -1,0 +1,132 @@
+:root {
+  --color-bg-page: #f5f8f1;
+  --color-bg-surface: #ffffff;
+  --color-bg-subtle: #f2f5ed;
+  --color-bg-brand-soft: #efffde;
+  --color-bg-success-soft: #efffde;
+  --color-bg-warning-soft: #fff8dc;
+  --color-bg-danger-soft: #fff0ea;
+  --color-bg-info-soft: #edf5ff;
+
+  --color-text-primary: #163300;
+  --color-text-secondary: #4f5f45;
+  --color-text-tertiary: #7b8a72;
+  --color-text-inverse: #ffffff;
+
+  --color-border-default: #dbe5d3;
+  --color-border-strong: #bdcdb2;
+
+  --color-brand-primary: #163300;
+  --color-brand-primary-hover: #2f4f00;
+  --color-brand-accent: #9fe870;
+  --color-brand-accent-hover: #80e142;
+  --color-success: #2f5711;
+  --color-warning: #edc843;
+  --color-danger: #a8200d;
+  --color-info: #1f66b1;
+  --color-neutral: #4f5f45;
+  --color-success-foreground: #235200;
+  --color-warning-foreground: #654600;
+  --color-danger-foreground: #8a2d17;
+  --color-info-foreground: #174f8c;
+  --color-success-border: rgba(47, 87, 17, 0.24);
+  --color-warning-border: rgba(237, 200, 67, 0.42);
+  --color-danger-border: rgba(168, 32, 13, 0.24);
+  --color-info-border: rgba(31, 102, 177, 0.24);
+  --color-brand-focus: rgba(159, 232, 112, 0.42);
+  --color-danger-focus: rgba(168, 32, 13, 0.14);
+  --color-overlay: rgba(22, 51, 0, 0.52);
+  --color-shimmer: rgba(255, 255, 255, 0.72);
+
+  --font-family-base: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-family-number: "Roboto Mono", "SF Mono", Consolas, monospace;
+
+  --font-size-caption: 12px;
+  --font-size-body: 14px;
+  --font-size-body-lg: 16px;
+  --font-size-section: 18px;
+  --font-size-title: 24px;
+  --font-size-display: 32px;
+
+  --line-height-caption: 18px;
+  --line-height-body: 22px;
+  --line-height-section: 28px;
+  --line-height-title: 32px;
+  --line-height-display: 40px;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-6: 6px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-40: 40px;
+  --space-48: 48px;
+  --space-64: 64px;
+
+  --page-padding: 32px;
+  --section-gap: 24px;
+  --field-gap: 12px;
+  --list-item-gap: 12px;
+  --bottom-action-padding: 24px;
+
+  --radius-xs: 4px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-pill: 999px;
+
+  --shadow-card: 0 10px 28px rgba(22, 51, 0, 0.08);
+  --shadow-dropdown: 0 14px 36px rgba(22, 51, 0, 0.14);
+  --shadow-modal: 0 24px 56px rgba(22, 51, 0, 0.22);
+
+  --page-padding-desktop: 32px;
+  --page-padding-mobile: 16px;
+
+  --card-padding: 20px;
+  --card-radius: var(--radius-lg);
+  --radius-card: var(--radius-lg);
+  --radius-input: var(--radius-md);
+  --radius-button: var(--radius-pill);
+  --radius-sheet: var(--radius-xl);
+
+  --button-height-sm: 32px;
+  --button-height-md: 40px;
+  --button-height-lg: 48px;
+  --button-radius: var(--radius-pill);
+
+  --input-height-md: 40px;
+  --input-radius: var(--radius-md);
+  --touch-target-min: 40px;
+
+  --icon-size-xs: 14px;
+  --icon-size-sm: 16px;
+  --icon-size-md: 20px;
+  --icon-size-lg: 24px;
+  --icon-size-xl: 32px;
+  --icon-size-2xl: 48px;
+  --icon-size-3xl: 64px;
+
+  --icon-stroke-width: 1.75px;
+
+  --icon-color-default: var(--color-text-secondary);
+  --icon-color-muted: var(--color-text-tertiary);
+  --icon-color-primary: var(--color-brand-primary);
+  --icon-color-success: var(--color-success);
+  --icon-color-warning: var(--color-warning);
+  --icon-color-danger: var(--color-danger);
+  --icon-color-info: var(--color-info);
+  --icon-color-inverse: var(--color-text-inverse);
+
+  --transition-fast: 160ms ease;
+  --transition-base: 220ms ease;
+}

@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Broker Review Queue - v2 Visual</title>
+    <link rel="stylesheet" href="../../styles/globals.css">
+    <link rel="stylesheet" href="../../styles/components.css">
+    <style>
+      .metric-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: var(--space-16);
+        margin-bottom: var(--space-16);
+      }
+
+      .metric-value {
+        margin: 0;
+        color: var(--color-text-primary);
+        font-size: var(--font-size-display);
+        font-weight: var(--font-weight-bold);
+        line-height: var(--line-height-display);
+      }
+
+      .filter-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: var(--space-12);
+        margin-bottom: var(--space-16);
+      }
+
+      .review-layout {
+        margin-top: var(--space-24);
+      }
+
+      @media (max-width: 860px) {
+        .metric-grid,
+        .filter-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="page-header">
+        <div>
+          <p class="page-kicker">Compliance operations</p>
+          <h1 class="page-title">Broker Review Queue</h1>
+          <p class="page-subtitle">Prioritize high-risk cases, SLA breaches, and blocked financial actions.</p>
+        </div>
+        <button class="ui-button ui-button--primary ui-button--md">Review Action Required</button>
+      </header>
+
+      <section class="metric-grid" aria-label="Queue summary">
+        <article class="ui-card ui-card--elevated">
+          <p class="metric-value">28</p>
+          <p class="metadata">Open cases</p>
+        </article>
+        <article class="ui-card">
+          <p class="metric-value">7</p>
+          <p class="metadata">High risk</p>
+        </article>
+        <article class="ui-card">
+          <p class="metric-value">4</p>
+          <p class="metadata">Blocked withdrawals</p>
+        </article>
+        <article class="ui-card">
+          <p class="metric-value">2h 14m</p>
+          <p class="metadata">Oldest SLA</p>
+        </article>
+      </section>
+
+      <div class="ui-alert ui-alert--warning">
+        <strong>Withdrawal movement is blocked for 4 cases</strong>
+        <span>Funds cannot leave trading accounts until liveness verification is complete or compliance manually clears the hold.</span>
+      </div>
+
+      <div class="layout-grid review-layout">
+        <section class="ui-card ui-card--elevated">
+          <div class="ui-card__header">
+            <div>
+              <h2 class="ui-card__title">Cases requiring review</h2>
+              <p class="ui-card__description">Sorted by risk level and SLA age.</p>
+            </div>
+            <span class="ui-status ui-status--warning">Reviewing</span>
+          </div>
+
+          <div class="filter-grid">
+            <label class="ui-field">
+              <span class="ui-field__label">Status</span>
+              <select class="ui-select">
+                <option>All active statuses</option>
+              </select>
+            </label>
+            <label class="ui-field">
+              <span class="ui-field__label">Risk level</span>
+              <select class="ui-select">
+                <option>High and medium</option>
+              </select>
+            </label>
+            <label class="ui-field">
+              <span class="ui-field__label">Search</span>
+              <input class="ui-input" placeholder="Case ID or account">
+            </label>
+          </div>
+
+          <div class="ui-table-wrap">
+            <table class="ui-table">
+              <thead>
+                <tr>
+                  <th>Case</th>
+                  <th>Client</th>
+                  <th>Status</th>
+                  <th>Risk reason</th>
+                  <th class="is-right">Amount</th>
+                  <th>SLA</th>
+                  <th class="is-actions">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>KYC-1048</td>
+                  <td>Maria Gomez</td>
+                  <td><span class="ui-status ui-status--warning">Reviewing</span></td>
+                  <td>Address mismatch</td>
+                  <td class="amount">-</td>
+                  <td>2h 14m</td>
+                  <td class="is-actions"><button class="ui-button ui-button--ghost ui-button--sm">Open</button></td>
+                </tr>
+                <tr>
+                  <td>WD-8891</td>
+                  <td>Chen Wei</td>
+                  <td><span class="ui-status ui-status--danger">Blocked</span></td>
+                  <td>Liveness required</td>
+                  <td class="amount">18,420.00 USD</td>
+                  <td>48m</td>
+                  <td class="is-actions"><button class="ui-button ui-button--ghost ui-button--sm">Open</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <aside class="stack">
+          <section class="ui-card">
+            <div class="ui-card__header">
+              <div>
+                <h2 class="ui-card__title">Primary action</h2>
+                <p class="ui-card__description">Choose one case before bulk processing.</p>
+              </div>
+            </div>
+            <div class="stack">
+              <button class="ui-button ui-button--primary ui-button--md" disabled>Approve Selected</button>
+              <button class="ui-button ui-button--secondary ui-button--md">Request More Information</button>
+            </div>
+          </section>
+
+          <div class="ui-alert ui-alert--info">
+            <strong>Reviewer guidance</strong>
+            <span>For blocked withdrawals, verify liveness status before changing the funds hold.</span>
+          </div>
+        </aside>
+      </div>
+    </main>
+  </body>
+</html>

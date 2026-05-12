@@ -1,0 +1,58 @@
+<!--
+  StatusBadge component
+  Variants: success, warning, danger, neutral, info
+  Usage: <span class="ui-status ui-status--warning">Reviewing</span>
+-->
+<style>
+  .ui-status {
+    display: inline-flex;
+    min-height: 24px;
+    align-items: center;
+    gap: var(--space-6);
+    border: 1px solid transparent;
+    border-radius: var(--radius-pill);
+    padding: var(--space-2) var(--space-8);
+    font-size: var(--font-size-caption);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-caption);
+    white-space: nowrap;
+  }
+
+  .ui-status::before {
+    width: 6px;
+    height: 6px;
+    border-radius: var(--radius-pill);
+    background: currentColor;
+    content: "";
+  }
+
+  .ui-status--success {
+    border-color: var(--color-success-border);
+    background: var(--color-bg-success-soft);
+    color: var(--color-success-foreground);
+  }
+
+  .ui-status--warning {
+    border-color: var(--color-warning-border);
+    background: var(--color-bg-warning-soft);
+    color: var(--color-warning-foreground);
+  }
+
+  .ui-status--danger {
+    border-color: var(--color-danger-border);
+    background: var(--color-bg-danger-soft);
+    color: var(--color-danger-foreground);
+  }
+
+  .ui-status--neutral {
+    border-color: var(--color-border-default);
+    background: var(--color-bg-subtle);
+    color: var(--color-text-secondary);
+  }
+
+  .ui-status--info {
+    border-color: var(--color-info-border);
+    background: var(--color-bg-info-soft);
+    color: var(--color-info-foreground);
+  }
+</style>

@@ -1,0 +1,12 @@
+:root,
+:root[data-theme="light"] {
+  color-scheme: light;
+  --color-bg-page: #f5f8f1;
+  --color-bg-surface: #ffffff;
+  --color-bg-subtle: #f2f5ed;
+  --color-text-primary: #163300;
+  --color-text-secondary: #4f5f45;
+  --color-text-tertiary: #7b8a72;
+  --color-border-default: #dbe5d3;
+  --color-border-strong: #bdcdb2;
+}

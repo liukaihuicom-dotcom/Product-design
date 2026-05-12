@@ -1,0 +1,30 @@
+<!--
+  EmptyState component
+  Usage: <div class="ui-empty"><h3>No records found</h3><p>...</p><button class="ui-button ...">...</button></div>
+-->
+<style>
+  .ui-empty {
+    display: grid;
+    min-height: 220px;
+    place-items: center;
+    gap: var(--space-12);
+    border: 1px dashed var(--color-border-strong);
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-subtle);
+    padding: var(--space-32);
+    text-align: center;
+  }
+
+  .ui-empty h3 {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: var(--font-size-section);
+    line-height: var(--line-height-section);
+  }
+
+  .ui-empty p {
+    max-width: 480px;
+    margin: 0;
+    color: var(--color-text-secondary);
+  }
+</style>
